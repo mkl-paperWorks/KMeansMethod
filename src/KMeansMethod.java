@@ -15,8 +15,9 @@ public class KMeansMethod {
 		this.K = k;
 		this.points = points;
 		
+		//随机生成K个中心点，并保证中心点不重复
 		center = new MPoint[k];
-		int[] numrec = new int[3];
+		int[] numrec = new int[k];
 		for(int i = 0 ; i < k ; i++)
 		{
 			center[i] = new MPoint();
@@ -40,11 +41,6 @@ public class KMeansMethod {
 			MPoint p = points.get(randnum);
 			center[i].setPosition(p.getPosition());
 		}
-		for(int i = 0 ; i < points.size() ; i++)
-		{
-			MPoint p = points.get(i);
-			p.setType(getCloserCenter(p));
-		}
 	}
 	
 	public MPoint[] getCenter() {
@@ -61,18 +57,21 @@ public class KMeansMethod {
 	 */
 	public void K_Means_cluster_method()
 	{
+		//计算每个点所属区域
 		for(int i = 0 ; i < points.size() ; i++)
 		{
 			MPoint p = points.get(i);
 			p.setType(getCloserCenter(p));
 		}
 		
+		//使用每个区域所属点平均位置重新计算中心点位置
 		float dis = 0;
 		for(int i = 0 ; i < center.length ; i++)
 		{
 			dis += calCenterPosition(i);
 		}
 		
+		//中心点移动距离小于定值时迭代计算结束
 		if(dis > 3)
 		{
 			K_Means_cluster_method();
