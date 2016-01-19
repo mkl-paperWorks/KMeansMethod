@@ -4,7 +4,7 @@ import processing.core.PApplet;
 
 
 /**
- * 绘图
+ * 使用Processing绘图
  */
 public class Drawer extends PApplet{
 	
