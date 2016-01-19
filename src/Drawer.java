@@ -65,6 +65,9 @@ public class Drawer extends PApplet{
 		}
 	}
 	
+	/**
+	 * 鼠标点击时才运行算法
+	 */
 	public void mouseClicked()
 	{
 		kmd.update();
