@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
-
+/**
+ * k means聚类算法
+ * @author xiaying
+ */
 public class KMeansMethod {
 	private ArrayList<MPoint> points;
 	
@@ -10,6 +13,11 @@ public class KMeansMethod {
 	
 	public KMeansMethod(){}
 	
+	/**
+	 * 设置数据，以及聚类个数
+	 * @param points
+	 * @param k
+	 */
 	public void setData(ArrayList<MPoint> points, int k)
 	{
 		this.K = k;
